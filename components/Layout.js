@@ -1,17 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+import { Layout as AntLayout } from 'antd';
 
-import { logout } from '../lib/auth';
+const { Header, Footer, Content } = AntLayout;
 
-import AppContext from '../context/AppContext';
+import NavMenu from './Navigation/NavMenu';
 
 const Layout = (props) => {
-  const { user, setUser } = useContext(AppContext);
-
   const title = 'Welcome to Next.js!';
-
-  console.log('user :>> ', user);
 
   return (
     <div>
@@ -19,37 +15,14 @@ const Layout = (props) => {
         <title>{title}</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-
-        <script src='https://js.stripe.com/v3' />
       </Head>
-      <header>
-        <nav>
-          {user ? (
-            <Link href='/user'>{user.username}</Link>
-          ) : (
-            <Link href='/register'>
-              <a>Sign up</a>
-            </Link>
-          )}
-          {user ? (
-            <Link href='/'>
-              <a
-                onClick={() => {
-                  logout();
-                  setUser(null);
-                }}
-              >
-                Logout
-              </a>
-            </Link>
-          ) : (
-            <Link href='/login'>
-              <a>Login</a>
-            </Link>
-          )}
-        </nav>
-      </header>
-      <main>{props.children}</main>
+      <AntLayout>
+        <Header>
+          <NavMenu />
+        </Header>
+        <Content>{props.children}</Content>
+        <Footer>This is the Footer</Footer>
+      </AntLayout>
     </div>
   );
 };

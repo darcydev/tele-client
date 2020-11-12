@@ -1,9 +1,7 @@
-import RestaurantList from '../components/Restaurants/RestaurantList';
-
 function Home() {
   return (
     <div>
-      <RestaurantList />
+      <h1>Home Page</h1>
     </div>
   );
 }

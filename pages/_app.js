@@ -8,6 +8,8 @@ import Layout from '../components/Layout';
 
 import AppContext from '../context/AppContext';
 
+import 'antd/dist/antd.css';
+
 class MyApp extends App {
   state = {
     user: null,

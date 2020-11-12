@@ -1,14 +1,10 @@
-import styled from 'styled-components';
-
 import { LoginForm } from '../components/Forms/LoginForm';
 
 export default function LoginPage() {
   return (
-    <StyledContainer>
+    <div>
       <h1>Login</h1>
       <LoginForm />
-    </StyledContainer>
+    </div>
   );
 }
-
-const StyledContainer = styled.div``;
