@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import Link from 'next/link';
-import styled from 'styled-components';
 import { Menu } from 'antd';
 import { IoMdPerson } from 'react-icons/io';
 
