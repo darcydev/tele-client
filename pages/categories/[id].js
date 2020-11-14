@@ -13,7 +13,6 @@ const CategoryPage = ({ category }) => {
 
   return (
     <div>
-      <Head>Hi</Head>
       <div>
         <h1>{category.title}</h1>
         <h2>{category.subtitle}</h2>

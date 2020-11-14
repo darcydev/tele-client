@@ -5,11 +5,7 @@ import { login } from '../../lib/auth';
 export const LoginForm = () => {
   const { handleSubmit, register, errors } = useForm();
 
-  const onSubmit = (values) => {
-    const { email, password } = values;
-
-    login(email, password);
-  };
+  const onSubmit = (values) => login(values);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

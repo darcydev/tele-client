@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { Menu } from 'antd';
 import { IoMdPerson } from 'react-icons/io';
+import { AiFillShop } from 'react-icons/ai';
 
 import { logout } from '../../lib/auth';
 
@@ -18,14 +19,9 @@ export default function NavMenu() {
             <Link href='/user'>{user.username}</Link>
           </Menu.Item>
         )}
-        {!user && (
-          <Menu.Item key='login' icon={<IoMdPerson />}>
-            <Link href='/login'>Login</Link>
-          </Menu.Item>
-        )}
-        {!user && (
-          <Menu.Item key='sign-up' icon={<IoMdPerson />}>
-            <Link href='/register'>Sign up</Link>
+        {user && (
+          <Menu.Item key='products' icon={<AiFillShop />}>
+            <Link href='/products'>Products</Link>
           </Menu.Item>
         )}
         {user && (
@@ -40,6 +36,16 @@ export default function NavMenu() {
                 Logout
               </a>
             </Link>
+          </Menu.Item>
+        )}
+        {!user && (
+          <Menu.Item key='login' icon={<IoMdPerson />}>
+            <Link href='/login'>Login</Link>
+          </Menu.Item>
+        )}
+        {!user && (
+          <Menu.Item key='sign-up' icon={<IoMdPerson />}>
+            <Link href='/register'>Sign up</Link>
           </Menu.Item>
         )}
       </Menu>

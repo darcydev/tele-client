@@ -1,30 +1,47 @@
 import React from 'react';
 import Head from 'next/head';
-import { Layout as AntLayout } from 'antd';
-
-const { Header, Footer, Content } = AntLayout;
+import styled from 'styled-components';
 
 import NavMenu from './Navigation/NavMenu';
 
 const Layout = (props) => {
-  const title = 'Welcome to Next.js!';
-
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>Welcome to Next.js!</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+        <link
+          rel='stylesheet'
+          href='https://cdn.snipcart.com/themes/v3.0.25/default/snipcart.css'
+        />
       </Head>
-      <AntLayout>
-        <Header>
-          <NavMenu />
-        </Header>
-        <Content>{props.children}</Content>
-        <Footer>This is the Footer</Footer>
-      </AntLayout>
+      <header>
+        <NavMenu />
+      </header>
+      <main>
+        <StyledContainer>{props.children}</StyledContainer>
+      </main>
+      <footer>
+        This is the Footer
+        <script
+          async
+          src='https://cdn.snipcart.com/themes/v3.0.25/default/snipcart.js'
+        ></script>
+        <div
+          id='snipcart'
+          data-api-key='Njc3ZjNlMmQtZTNkOS00YzNiLTk3ZmMtMWUzZmJiY2Q1NDZhNjM3NDA5MDUzMzkzNTUzMTUx'
+          hidden
+        ></div>
+      </footer>
     </div>
   );
 };
 
 export default Layout;
+
+const StyledContainer = styled.div`
+  width: 1200px;
+  max-width: 90%;
+  margin: auto;
+`;

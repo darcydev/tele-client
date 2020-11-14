@@ -1,6 +1,4 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 
 import { getProducts, getProduct } from '../../lib/api';
 
@@ -11,12 +9,29 @@ const ProductPage = ({ product }) => {
     return <div>Loading product...</div>;
   }
 
+  console.log('product :>> ', product);
+
+  const { id, title, subtitle, description, price, image } = product;
+
+  const imageUrl = image.formats.thumbnail.url;
+
   return (
     <div>
-      <Head>Hi</Head>
-      <div>
-        <h1>{product.title}</h1>
-        <h2>{product.subtitle}</h2>
+      <div className='content'>
+        <img src={`http://localhost:1337${imageUrl}`} alt={title} />
+        <h1>{title}</h1>
+        <h2>{subtitle}</h2>
+        <p>{description}</p>
+        <button
+          className='snipcart-add-item product__button'
+          data-item-id={id}
+          data-item-url={router.asPath}
+          data-item-name={title}
+          data-item-description={description}
+          data-item-price={price}
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );
