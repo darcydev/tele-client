@@ -1,0 +1,13 @@
+/* VARIABLES */
+:root {
+  --light-blue: #ace7fb;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+p,
+a {
+  font-size: 16px;
+}

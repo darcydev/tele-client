@@ -1,54 +1,46 @@
 import { useContext } from 'react';
 import Link from 'next/link';
-import { Menu } from 'antd';
-import { IoMdPerson } from 'react-icons/io';
-import { AiFillShop } from 'react-icons/ai';
+import styled from 'styled-components';
 
 import { logout } from '../../lib/auth';
 
 import AppContext from '../../context/AppContext';
 
-export default function NavMenu() {
-  const { user, setUser } = useContext(AppContext);
+export const LeftNavMenu = () => {
+  return (
+    <StyledNavMenu>
+      <Link href='/products'>Shop</Link>
+      <Link href='/about'>About</Link>
+    </StyledNavMenu>
+  );
+};
+
+export const RightNavMenu = () => {
+  const { user, isAuth, setUser } = useContext(AppContext);
+
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+  };
 
   return (
-    <nav>
-      <Menu mode='horizontal'>
-        {user && (
-          <Menu.Item key='profile' icon={<IoMdPerson />}>
-            <Link href='/user'>{user.username}</Link>
-          </Menu.Item>
-        )}
-        {user && (
-          <Menu.Item key='products' icon={<AiFillShop />}>
-            <Link href='/products'>Products</Link>
-          </Menu.Item>
-        )}
-        {user && (
-          <Menu.Item key='logout' icon={<IoMdPerson />}>
-            <Link href='/'>
-              <a
-                onClick={() => {
-                  logout();
-                  setUser(null);
-                }}
-              >
-                Logout
-              </a>
-            </Link>
-          </Menu.Item>
-        )}
-        {!user && (
-          <Menu.Item key='login' icon={<IoMdPerson />}>
-            <Link href='/login'>Login</Link>
-          </Menu.Item>
-        )}
-        {!user && (
-          <Menu.Item key='sign-up' icon={<IoMdPerson />}>
-            <Link href='/register'>Sign up</Link>
-          </Menu.Item>
-        )}
-      </Menu>
-    </nav>
+    <StyledNavMenu>
+      {isAuth && <Link href='/user'>{user.first_name}</Link>}
+      {isAuth && (
+        <Link href='/'>
+          <a onClick={handleLogout()}>Logout</a>
+        </Link>
+      )}
+      {!isAuth && <Link href='/login'>Login</Link>}
+      {!isAuth && <Link href='/register'>Sign up</Link>}
+    </StyledNavMenu>
   );
-}
+};
+
+const StyledNavMenu = styled.div`
+  a {
+    color: #fff;
+    margin: 0 10px;
+    font-weight: 500;
+  }
+`;
