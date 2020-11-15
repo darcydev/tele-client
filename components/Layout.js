@@ -1,8 +1,9 @@
 import React from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-import NavMenu, { LeftNavMenu, RightNavMenu } from './Navigation/NavMenu';
+import { LeftNavMenu, RightNavMenu } from './Navigation/NavMenu';
 import { Footer } from './Layout/Footer';
 
 const Layout = (props) => {
@@ -26,7 +27,9 @@ const Layout = (props) => {
         <div className='content'>
           <LeftNavMenu />
           <div className='logo-wrp'>
-            <img src='./dummy-logo.jpg' alt='' />
+            <Link href='/'>
+              <img src='./dummy-logo.jpg' alt='' />
+            </Link>
           </div>
           <RightNavMenu />
         </div>

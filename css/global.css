@@ -11,3 +11,12 @@ p,
 a {
   font-size: 16px;
 }
+a {
+  cursor: pointer;
+}
+
+section.page {
+  width: 1080px;
+  max-width: 90%;
+  margin: auto;
+}
