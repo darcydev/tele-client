@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function Home() {
   return (
-    <>
+    <div className='home-page-wrp'>
       <Hero />
       <StyledSection className='page'>
         <div className='content'>
@@ -11,7 +11,7 @@ export default function Home() {
           <HowToBoxes />
         </div>
       </StyledSection>
-    </>
+    </div>
   );
 }
 
@@ -29,9 +29,11 @@ const ProductsBoxes = () => (
   <div className='products-wrp'>
     <h3>How can we help?</h3>
     <div className='boxes-wrp'>
-      <div className='box-wrp hair-loss'>
-        <h4>Hair loss</h4>
-      </div>
+      <Link href='/categories/hair'>
+        <div className='box-wrp hair'>
+          <h4>Hair</h4>
+        </div>
+      </Link>
       <div className='box-wrp sex'>
         <h4>Sex</h4>
       </div>
